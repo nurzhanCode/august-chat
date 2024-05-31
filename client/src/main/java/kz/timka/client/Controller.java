@@ -39,6 +39,7 @@ public class Controller implements Initializable{
                     while (true) {
                         String msg = in.readUTF();
                         msgArea.appendText(msg + "\n");
+                        System.out.println();
                     }
                 }catch (IOException e){
                     e.printStackTrace();
