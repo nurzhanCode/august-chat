@@ -4,6 +4,7 @@ package kz.timka.client;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.layout.HBox;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -15,10 +16,13 @@ import java.util.ResourceBundle;
 public class Controller implements Initializable{
 
     @FXML
-    private TextField msgField;
+    private TextField msgField, loginField;
 
     @FXML
     private TextArea msgArea;
+
+    @FXML
+    private HBox loginBox, msgBox;
     private Socket socket;
     private DataInputStream in;
     private DataOutputStream out;
@@ -35,6 +39,7 @@ public class Controller implements Initializable{
                     while (true) {
                         String msg = in.readUTF();
                         msgArea.appendText(msg + "\n");
+                        System.out.println();
                     }
                 }catch (IOException e){
                     e.printStackTrace();
@@ -45,6 +50,10 @@ public class Controller implements Initializable{
             e.printStackTrace();
             throw new RuntimeException("Unable to connect to server");
         }
+    }
+
+    public void login() {
+
     }
 
     public void sendMsg() {
